@@ -1,33 +1,73 @@
+import "../styles/reboot.css"
+
 import React from 'react'
 import { Link } from 'gatsby'
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 
-const IndexPage = () => (
-  <React.Fragment>
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
-          <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-        <Nav>
-          <Nav.Link href="#deets">More deets</Nav.Link>
-          <Nav.Link eventKey={2} href="#memes">
-            Dank memes
-          </Nav.Link>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
-  </React.Fragment>
-)
+import styled, { keyframes } from "styled-components";
 
-export default IndexPage
+
+const OpenAnimation = keyframes`
+  0% { max-height: 0; }
+  100% { max-height: 8rem; }
+`;
+
+const GMNav = styled.nav`
+  color: black;
+`
+
+const GMNavList = styled.ul`
+  padding-inline-start: 0;
+
+  /* Animation */
+  animation: ${OpenAnimation} 0.5s linear infinite;
+`
+const GMNavListItem = styled.li`
+  list-style-type: none;
+  text-align: center;
+`
+
+const GMNavButton = styled.div`
+  text-align: center;
+`
+
+
+export default class IndexPage extends React.Component {
+
+  state = {
+    open: false,
+  }
+  
+  handleMenuClick = () => {
+    console.log('ddddd')
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <GMNav>
+          <GMNavList>
+            <GMNavListItem>
+              <Link to="#">artists</Link>
+            </GMNavListItem>
+            <GMNavListItem>
+              <Link to="#">blog</Link>
+            </GMNavListItem>
+            <GMNavListItem>
+              <Link to="#">contact</Link>
+            </GMNavListItem>
+            <GMNavListItem>
+              <Link to="#">shop</Link>
+            </GMNavListItem>
+            <GMNavListItem>
+              <Link to="#">about</Link>
+            </GMNavListItem>
+          </GMNavList>
+        </GMNav>
+        <GMNavButton onClick={this.handleMenuClick}>
+          <button>menu</button>
+        </GMNavButton>
+    
+      </React.Fragment>
+    )
+  }
+}
