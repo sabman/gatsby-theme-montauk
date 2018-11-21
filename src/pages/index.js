@@ -4,22 +4,23 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import styled, { keyframes } from "styled-components";
+import { CSSTransition } from 'react-transition-group';
 
 
-const OpenAnimation = keyframes`
-  0% { max-height: 0; }
-  100% { max-height: 8rem; }
-`;
 
 const GMNav = styled.nav`
   color: black;
+
+  max-height: ${props => props.isOpen ? "100%" : "0" };
+  overflow: ${props => props.isOpen ? "visible" : "hidden" };
+  visibility: ${props => props.isOpen ? "visible" : "hidden" };
+
+  ${'' /* transition: max-height,.3s; */}
 `
 
 const GMNavList = styled.ul`
   padding-inline-start: 0;
-
-  /* Animation */
-  animation: ${OpenAnimation} 0.5s linear infinite;
+  margin-bottom: 0;
 `
 const GMNavListItem = styled.li`
   list-style-type: none;
@@ -28,6 +29,8 @@ const GMNavListItem = styled.li`
 
 const GMNavButton = styled.div`
   text-align: center;
+  border: 1px solid black;
+
 `
 
 
@@ -38,13 +41,13 @@ export default class IndexPage extends React.Component {
   }
   
   handleMenuClick = () => {
-    console.log('ddddd')
+    this.setState({ open: !this.state.open })
   }
 
   render() {
     return (
       <React.Fragment>
-        <GMNav>
+        <GMNav isOpen={this.state.open}>
           <GMNavList>
             <GMNavListItem>
               <Link to="#">artists</Link>
@@ -66,7 +69,6 @@ export default class IndexPage extends React.Component {
         <GMNavButton onClick={this.handleMenuClick}>
           <button>menu</button>
         </GMNavButton>
-    
       </React.Fragment>
     )
   }
