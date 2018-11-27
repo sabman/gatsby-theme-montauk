@@ -4,12 +4,15 @@ import React from 'react'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 import { CSSTransition } from 'react-transition-group';
 
 import { SlideDown } from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css'
 
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 const GlobalStyle = createGlobalStyle`
   html,
@@ -98,9 +101,18 @@ const ListGroup = styled.div`
   font-style: normal;
 
   text-align: center;
+
+  ${({ horizontal }) => horizontal && css`
+    display: flex;
+    flex-direction: row;
+  `}
 `
 
 const ListGroupItem = styled.div`
+
+  ${({ horizontal }) => horizontal && css`
+    padding: 0 4px;
+  `}
 `
 
 const Hero = styled.div`
@@ -163,6 +175,11 @@ const Collapse = styled(SlideDown)`
     transition-timing-function: ease-in-out;
   }
 `
+const SocialIcon = styled(FontAwesomeIcon)`
+  color: black;
+  font-size: 24px;
+`
+
 
 export default class IndexPage extends React.Component {
 
@@ -175,6 +192,10 @@ export default class IndexPage extends React.Component {
   }
 
   render() {
+
+    console.log(this.props.data)
+
+
     return (
       <React.Fragment>
         <Grid>
@@ -231,6 +252,18 @@ export default class IndexPage extends React.Component {
           <Cell>
             <Footer>
                 Made by Gatsby Manor
+
+              <ListGroup horizontal>
+                <ListGroupItem horizontal>
+                  <SocialIcon icon={faGithub} />
+                </ListGroupItem>
+                <ListGroupItem horizontal>
+                  <SocialIcon icon={faLinkedin} />
+                </ListGroupItem>
+                <ListGroupItem horizontal>
+                  <SocialIcon icon={faTwitter} />
+                </ListGroupItem>
+              </ListGroup>
             </Footer>
           </Cell>
         </Grid>
