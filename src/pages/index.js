@@ -5,7 +5,10 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
 import styled, { createGlobalStyle } from "styled-components";
-import { Transition } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
+
+import { SlideDown } from 'react-slidedown'
+import 'react-slidedown/lib/slidedown.css'
 
 
 const GlobalStyle = createGlobalStyle`
@@ -153,6 +156,14 @@ const Footer = styled.div`
   border-top-width: 2px;
 `
 
+const Collapse = styled(SlideDown)`
+
+  &.react-slidedown.gm-slidedown {
+    transition-duration: 150ms;
+    transition-timing-function: ease-in-out;
+  }
+`
+
 export default class IndexPage extends React.Component {
 
   state = {
@@ -168,14 +179,19 @@ export default class IndexPage extends React.Component {
       <React.Fragment>
         <Grid>
           <Cell>
-            <Navbar>
-              <NavbarItem>artists</NavbarItem>
-              <NavbarItem>blog</NavbarItem>
-              <NavbarItem>contact</NavbarItem>
-              <NavbarItem>shop</NavbarItem>
-              <NavbarItem>about</NavbarItem>
-            </Navbar>
-            <NavbarButton>menu</NavbarButton>
+            <Collapse className={`gm-slidedown`}>
+              {this.state.open ? (
+                  <Navbar>
+                    <NavbarItem>artists</NavbarItem>
+                    <NavbarItem>blog</NavbarItem>
+                    <NavbarItem>contact</NavbarItem>
+                    <NavbarItem>shop</NavbarItem>
+                    <NavbarItem>about</NavbarItem>
+                  </Navbar>
+                ) : null
+              }
+            </Collapse>
+            <NavbarButton onClick={this.handleMenuClick}>menu</NavbarButton>
           </Cell>
           <Cell>
             <Header>
