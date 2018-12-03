@@ -24,6 +24,38 @@ import Img from 'gatsby-image'
 import { Link } from 'gatsby'
 import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
+import styled, { css } from "styled-components";
+
+
+const StyledNav = styled(Navbar)`
+  grid-auto-flow: row;
+
+  @media (min-width: 576px) {
+    grid-auto-flow: column;
+  }
+`
+const StyledNavItem = styled(NavbarItem)`
+  
+  @media (min-width: 576px) {
+    color: rgba(0, 0, 0, .5);
+  }
+`
+
+const StyledListGroup = styled(ListGroup)`
+  display: grid;
+  grid-auto-flow: row;
+
+  @media (min-width: 576px) {
+    grid-auto-flow: column;
+  }
+`
+
+const StyledListGroupItem = styled(ListGroupItem)`
+  @media (min-width: 576px) {
+  
+  }
+`
+
 
 export default class IndexPage extends React.Component {
 
@@ -39,20 +71,19 @@ export default class IndexPage extends React.Component {
 
     console.log(this.props.data)
 
-
     return (
       <React.Fragment>
         <Grid>
           <Cell>
             <Collapse className={`gm-slidedown`}>
               {this.state.open ? (
-                  <Navbar>
-                    <NavbarItem>artists</NavbarItem>
-                    <NavbarItem>blog</NavbarItem>
-                    <NavbarItem>contact</NavbarItem>
-                    <NavbarItem>shop</NavbarItem>
-                    <NavbarItem>about</NavbarItem>
-                  </Navbar>
+                  <StyledNav>
+                    <StyledNavItem>artists</StyledNavItem>
+                    <StyledNavItem>blog</StyledNavItem>
+                    <StyledNavItem>contact</StyledNavItem>
+                    <StyledNavItem>shop</StyledNavItem>
+                    <StyledNavItem>about</StyledNavItem>
+                  </StyledNav>
                 ) : null
               }
             </Collapse>
@@ -61,12 +92,21 @@ export default class IndexPage extends React.Component {
           <Cell>
             <Section>
               <Img fixed={this.props.data.logo.fixed} />
-              <ListGroup>
-                <ListGroupItem>51 edgemere street</ListGroupItem>
-                <ListGroupItem>montauk, ny, 11954</ListGroupItem>
-                <ListGroupItem>(800) 123-4567</ListGroupItem>
-              </ListGroup>
+              <StyledListGroup>
+                <StyledListGroupItem>51 edgemere street</StyledListGroupItem>
+                <StyledListGroupItem>montauk, ny, 11954</StyledListGroupItem>
+                <StyledListGroupItem>(800) 123-4567</StyledListGroupItem>
+              </StyledListGroup>
             </Section>
+          </Cell>
+          <Cell>
+            <StyledNav>
+              <StyledNavItem>artists</StyledNavItem>
+              <StyledNavItem>blog</StyledNavItem>
+              <StyledNavItem>contact</StyledNavItem>
+              <StyledNavItem>shop</StyledNavItem>
+              <StyledNavItem>about</StyledNavItem>
+            </StyledNav>
           </Cell>
           <Cell>
             <Hero>
