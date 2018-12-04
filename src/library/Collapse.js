@@ -11,4 +11,3 @@ const Collapse = styled(SlideDown)`
   }
 `
 export { Collapse }
-

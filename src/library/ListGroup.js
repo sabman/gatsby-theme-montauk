@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { SMALL_BREAKPOINT } from "./breakpoints"
 
 const ListGroup = styled.div`
   width: 100%;
@@ -21,6 +22,12 @@ const ListGroup = styled.div`
     display: flex;
     flex-direction: row;
   `}
+
+  grid-auto-flow: row;
+
+  @media (min-width: ${SMALL_BREAKPOINT}) {
+    grid-auto-flow: column;
+  }
 `
 
 export { ListGroup }

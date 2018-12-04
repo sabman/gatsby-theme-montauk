@@ -24,45 +24,12 @@ import Img from 'gatsby-image'
 import { Link } from 'gatsby'
 import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
-import styled, { css } from "styled-components";
-
-
-const StyledNav = styled(Navbar)`
-  grid-auto-flow: row;
-
-  @media (min-width: 576px) {
-    grid-auto-flow: column;
-  }
-`
-const StyledNavItem = styled(NavbarItem)`
-  
-  @media (min-width: 576px) {
-    color: rgba(0, 0, 0, .5);
-  }
-`
-
-const StyledListGroup = styled(ListGroup)`
-  display: grid;
-  grid-auto-flow: row;
-
-  @media (min-width: 576px) {
-    grid-auto-flow: column;
-  }
-`
-
-const StyledListGroupItem = styled(ListGroupItem)`
-  @media (min-width: 576px) {
-  
-  }
-`
-
-
 export default class IndexPage extends React.Component {
 
   state = {
     open: false,
   }
-  
+
   handleMenuClick = () => {
     this.setState({ open: !this.state.open })
   }
@@ -77,13 +44,13 @@ export default class IndexPage extends React.Component {
           <Cell>
             <Collapse className={`gm-slidedown`}>
               {this.state.open ? (
-                  <StyledNav>
-                    <StyledNavItem>artists</StyledNavItem>
-                    <StyledNavItem>blog</StyledNavItem>
-                    <StyledNavItem>contact</StyledNavItem>
-                    <StyledNavItem>shop</StyledNavItem>
-                    <StyledNavItem>about</StyledNavItem>
-                  </StyledNav>
+                  <Navbar>
+                    <NavbarItem>artists</NavbarItem>
+                    <NavbarItem>blog</NavbarItem>
+                    <NavbarItem>contact</NavbarItem>
+                    <NavbarItem>shop</NavbarItem>
+                    <NavbarItem>about</NavbarItem>
+                  </Navbar>
                 ) : null
               }
             </Collapse>
@@ -92,21 +59,21 @@ export default class IndexPage extends React.Component {
           <Cell>
             <Section>
               <Img fixed={this.props.data.logo.fixed} />
-              <StyledListGroup>
-                <StyledListGroupItem>51 edgemere street</StyledListGroupItem>
-                <StyledListGroupItem>montauk, ny, 11954</StyledListGroupItem>
-                <StyledListGroupItem>(800) 123-4567</StyledListGroupItem>
-              </StyledListGroup>
+              <ListGroup>
+                <ListGroupItem>51 edgemere street</ListGroupItem>
+                <ListGroupItem>montauk, ny, 11954</ListGroupItem>
+                <ListGroupItem>(800) 123-4567</ListGroupItem>
+              </ListGroup>
             </Section>
           </Cell>
           <Cell>
-            <StyledNav>
-              <StyledNavItem>artists</StyledNavItem>
-              <StyledNavItem>blog</StyledNavItem>
-              <StyledNavItem>contact</StyledNavItem>
-              <StyledNavItem>shop</StyledNavItem>
-              <StyledNavItem>about</StyledNavItem>
-            </StyledNav>
+            <Navbar>
+              <NavbarItem>artists</NavbarItem>
+              <NavbarItem>blog</NavbarItem>
+              <NavbarItem>contact</NavbarItem>
+              <NavbarItem>shop</NavbarItem>
+              <NavbarItem>about</NavbarItem>
+            </Navbar>
           </Cell>
           <Cell>
             <Hero>
@@ -115,14 +82,14 @@ export default class IndexPage extends React.Component {
             </Hero>
             <Section>
               <SectionBody>
-                Vestibulum id ligula porta felis euismod semper. 
-                Etiam porta sem malesuada magna mollis euismod. 
-                Nulla vitae elit libero, a pharetra augue. Nullam id dolor 
-                id nibh ultricies vehicula ut id elit. Praesent commodo cursus 
-                magna, vel scelerisque nisl consectetur et. Sed posuere consectetur 
-                est at lobortis. Donec ullamcorper nulla non metus auctor fringilla. 
-                Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo 
-                quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. 
+                Vestibulum id ligula porta felis euismod semper.
+                Etiam porta sem malesuada magna mollis euismod.
+                Nulla vitae elit libero, a pharetra augue. Nullam id dolor
+                id nibh ultricies vehicula ut id elit. Praesent commodo cursus
+                magna, vel scelerisque nisl consectetur et. Sed posuere consectetur
+                est at lobortis. Donec ullamcorper nulla non metus auctor fringilla.
+                Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo
+                quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
                 Maecenas sed diam eget risus varius blandit sit
                 amet non magna. Cras mattis consectetur purus sit amet fermentum.
               </SectionBody>
@@ -188,5 +155,3 @@ export const pageQuery = graphql`
 
   }
 `
-
-
