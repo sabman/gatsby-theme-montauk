@@ -13,36 +13,19 @@ const breakpointsMap = {
   xl: XLARGE_BREAKPOINT,
 }
 
+
 const hide = (state) => {
   if (state === undefined) return
+  if (state.length < 1) return
 
-  const isInterval = state.includes(",")
 
-  if (isInterval) {
-    const screens = state.split(",")
-    const smallerBreakpoint = breakpointsMap[screens[0]]
-    const largerBreakpoint = breakpointsMap[screens[1]]
-
-    return `
-      display: block;
-
-      @media (min-width: ${smallerBreakpoint}) {
-        display: none;
-      }
-
-      @media (min-width: ${largerBreakpoint}) {
-        display: block;
-      }
-    `
-  }
-
-  if (state === 'xs') {
+  if (state[0] === 'xs') {
     return `
       display: none;
     `
   }
 
-  const screenBreakpoint = breakpointsMap[state]
+  const screenBreakpoint = breakpointsMap[state[0]]
 
   return `
     @media (min-width: ${screenBreakpoint}) {
@@ -51,30 +34,31 @@ const hide = (state) => {
   `
 }
 
+const hideForRange = (state) => {
+  if (state === undefined) return
+  if (state.length < 2) return
+
+  const smallerBreakpoint = breakpointsMap[state[0]]
+  const largerBreakpoint = breakpointsMap[state[1]]
+
+  return `
+    display: block;
+
+    @media (min-width: ${smallerBreakpoint}) {
+      display: none;
+    }
+
+    @media (min-width: ${largerBreakpoint}) {
+      display: block;
+    }
+  `
+}
+
 const visible = (state) => {
   if (state === undefined) return
+  if (state.length < 1) return
 
-  const isInterval = state.includes(",")
-
-  if (isInterval) {
-    const screens = state.split(",")
-    const smallerBreakpoint = breakpointsMap[screens[0]]
-    const largerBreakpoint = breakpointsMap[screens[1]]
-
-    return `
-      display: none;
-
-      @media (min-width: ${smallerBreakpoint}) {
-        display: block;
-      }
-
-      @media (min-width: ${largerBreakpoint}) {
-        display: none;
-      }
-    `
-  }
-
-  const screenBreakpoint = breakpointsMap[state]
+  const screenBreakpoint = breakpointsMap[state[0]]
 
   return `
     display: none;
@@ -85,27 +69,48 @@ const visible = (state) => {
   `
 }
 
+const visibleForRange = (state) => {
+  if (state === undefined) return
+  if (state.length < 2) return
+
+  const smallerBreakpoint = breakpointsMap[state[0]]
+  const largerBreakpoint = breakpointsMap[state[1]]
+
+  return `
+    display: none;
+
+    @media (min-width: ${smallerBreakpoint}) {
+      display: block;
+    }
+
+    @media (min-width: ${largerBreakpoint}) {
+      display: none;
+    }
+  `
+}
+
+
 /*
   Why? We need a way to conditional show and hide elements.
   TODO: Detemine if we want visibility functions for all library elements
 
   props.hide
-    > hidden on screen and up
-      >> xs: hidden on all
-      >> sm: hidden on sm and up
-      >> md: hidden on md and up
-      >> lg: hidden on lg and up
-    > Hidden on an interval
-      >> sm,lg: hidden between sm and lg
+    > hide on screen and up
+      >> [xs]: hidden on all
+      >> [sm]: hidden on sm and up
+      >> [md]: hidden on md and up
+      >> [lg]: hidden on lg and up
+    > hideForRange
+      >> [sm,lg]: hidden between sm and lg
 
   props.visible
-  > visible on screen and up
-    >> xs: visible on all
-    >> sm: visible on sm and up
-    >> md: visible on md and up
-    >> lg: visible on lg and up
-  > visible on an interval
-    >> sm,lg: visible between sm and lg
+  > visible on screen and up, array
+    >> [xs]: visible on all
+    >> [sm]: visible on sm and up
+    >> [md]: visible on md and up
+    >> [lg]: visible on lg and up
+  > visibleForRange
+    >> [sm,lg]: visible between sm and lg
 
   NOTE: For visbility, hidden takes precedence
 */
@@ -113,7 +118,11 @@ const visible = (state) => {
 const Cell = styled.div`
 
   ${(props) => hide(props.hide)}
+  ${(props) => hideForRange(props.hide)}
+
   ${(props) => visible(props.visible)}
+  ${(props) => visibleForRange(props.visible)}
+
 `
 
 export { Cell }

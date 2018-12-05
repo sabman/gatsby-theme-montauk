@@ -42,7 +42,7 @@ export default class IndexPage extends React.Component {
       <React.Fragment>
         <Grid>
           <Cell
-            hide={`md`}
+            hide={[`md`]}
           >
             <Collapse className={`gm-slidedown`}>
               {this.state.open ? (
@@ -69,7 +69,7 @@ export default class IndexPage extends React.Component {
             </Section>
           </Cell>
           <Cell
-            visible={`md`}
+            visible={[`md`]}
           >
             <Navbar>
               <NavbarItem>artists</NavbarItem>
