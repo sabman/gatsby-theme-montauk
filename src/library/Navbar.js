@@ -16,6 +16,14 @@ const Navbar = styled.div`
 
   @media (min-width: ${SMALL_BREAKPOINT}) {
     grid-auto-flow: column;
+
+    margin-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+
+    border-bottom-style: none;
+    border-bottom-color: transparent;
+    border-bottom-width: 0;
   }
 
 `

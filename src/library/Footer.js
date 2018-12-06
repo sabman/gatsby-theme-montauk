@@ -6,6 +6,9 @@ const Footer = styled.div`
   border-top-style: solid;
   border-top-color: rgba(0,0,0,.1);
   border-top-width: 2px;
+
+  margin-top: 40px;
+
 `
 
 export { Footer }

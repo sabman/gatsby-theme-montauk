@@ -71,13 +71,13 @@ export default class IndexPage extends React.Component {
           <Cell
             visible={[`md`]}
           >
-            <Navbar>
-              <NavbarItem>artists</NavbarItem>
-              <NavbarItem>blog</NavbarItem>
-              <NavbarItem>contact</NavbarItem>
-              <NavbarItem>shop</NavbarItem>
-              <NavbarItem>about</NavbarItem>
-            </Navbar>
+              <Navbar>
+                <NavbarItem>artists</NavbarItem>
+                <NavbarItem>blog</NavbarItem>
+                <NavbarItem>contact</NavbarItem>
+                <NavbarItem>shop</NavbarItem>
+                <NavbarItem>about</NavbarItem>
+              </Navbar>
           </Cell>
           <Cell>
             <Hero>
