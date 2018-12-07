@@ -27,8 +27,11 @@ const HeroTitle = styled.div`
   font-style: normal;
 
   @media (min-width: ${SMALL_BREAKPOINT}) {
-
     font-size: 40px;
+  }
+
+  @media (min-width: ${LARGE_BREAKPOINT}) {
+    font-size: 63px;
   }
   
 `

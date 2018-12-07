@@ -13,8 +13,10 @@ import { Section } from "./Section"
 import { SectionHeader } from "./SectionHeader"
 import { SectionBody } from "./SectionBody"
 import { Footer } from "./Footer"
+import { Container } from "./Container"
 
 export {
+  Container,
   Grid,
   Cell,
   Navbar,
