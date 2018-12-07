@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
 import {
-  SMALL_BREAKPOINT,
   MEDIUM_BREAKPOINT,
   LARGE_BREAKPOINT,
-  XLARGE_BREAKPOINT,
 } from "./breakpoints"
 
 
@@ -26,7 +24,7 @@ const HeroTitle = styled.div`
   font-weight: 300;
   font-style: normal;
 
-  @media (min-width: ${SMALL_BREAKPOINT}) {
+  @media (min-width: ${MEDIUM_BREAKPOINT}) {
     font-size: 40px;
   }
 
