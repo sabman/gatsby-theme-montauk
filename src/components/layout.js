@@ -55,8 +55,6 @@ export default class Layout extends React.Component {
 
   render() {
 
-    console.log(this.props.data)
-
     const navItems = pages.map((item, idx) => (
       <NavbarItem as={Link} key={idx} to={item.url}>{item.name}</NavbarItem>
     ))
@@ -98,8 +96,11 @@ export default class Layout extends React.Component {
                     }
                   }
                 `}
-                render={data => <Img fixed={data.logo.fixed} />
-                }
+                render={data => (
+                  <Link to="/">
+                    <Img fixed={data.logo.fixed} />
+                  </Link>
+                )}
               />
                 <ListGroup>
                   <ListGroupItem>51 edgemere street</ListGroupItem>
